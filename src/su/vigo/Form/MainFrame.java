@@ -2,6 +2,7 @@ package su.vigo.Form;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.util.Random;
@@ -28,6 +29,14 @@ public class MainFrame extends JFrame implements MouseMotionListener {
         initComponents();
     }
 
+    private final ActionListener actionListener = e -> {
+        switch (e.getActionCommand()) {
+            case "push":
+                JOptionPane.showMessageDialog(null, Resources.string("alert.message"));
+                break;
+        }
+    };
+
     private void initComponents() {
 
 
@@ -50,6 +59,9 @@ public class MainFrame extends JFrame implements MouseMotionListener {
         button.setBounds(100, 200, 100, 100);
         buttonYes.setBounds(300, 200, 100, 100);
         labelMsg.setBounds(0, 0, 300, 100);
+
+        buttonYes.addActionListener(actionListener);
+        buttonYes.setActionCommand(Resources.string("button.push.me.action"));
 
         add(button, BorderLayout.SOUTH);
         add(buttonYes, BorderLayout.SOUTH);
@@ -75,7 +87,7 @@ public class MainFrame extends JFrame implements MouseMotionListener {
     }
 
     public void mouseMoved(MouseEvent e) {
-        System.out.println(e.getX() + " " + button.getX() + " " + button.getWidth());
+//        System.out.println(e.getX() + " " + button.getX() + " " + button.getWidth());
 
         int btnX = button.getX() + button.getWidth() / 2;
         int btnY = button.getY() + button.getHeight() / 2;
