@@ -1,6 +1,8 @@
 package su.vigo;
 
 
+import su.vigo.Form.MainFrame;
+
 import java.awt.*;
 
 import static javax.swing.UIManager.setLookAndFeel;
@@ -16,11 +18,10 @@ public class Main {
         } catch (Exception e) {
             System.err.println(e);
         }
-        // write your code here
 
-        FirstFrame frame = new FirstFrame();
+        MainFrame frame = new MainFrame();
 
-        Dimension dimension = new Dimension(350, 100);
+        Dimension dimension = new Dimension(550, 500);
 
         frame.setMinimumSize(dimension);
 

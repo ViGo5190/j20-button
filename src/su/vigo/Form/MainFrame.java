@@ -1,4 +1,4 @@
-package su.vigo;
+package su.vigo.Form;
 
 import javax.swing.*;
 import java.awt.*;
@@ -6,9 +6,9 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.util.Random;
 
-import su.vigo.Resources.Resources;
+import su.vigo.Form.Resources.Resources;
 
-public class FirstFrame extends JFrame implements MouseMotionListener {
+public class MainFrame extends JFrame implements MouseMotionListener {
 
     private final JButton button;
     private final JButton buttonYes;
@@ -18,7 +18,7 @@ public class FirstFrame extends JFrame implements MouseMotionListener {
     private static final int DIFF_STEP = 20;
 
 
-    public FirstFrame() throws HeadlessException {
+    public MainFrame() throws HeadlessException {
         super(Resources.string("application.title"));
 
         labelMsg = new JLabel(Resources.string("label.message"), JLabel.CENTER);
@@ -33,8 +33,8 @@ public class FirstFrame extends JFrame implements MouseMotionListener {
 
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setLocationByPlatform(true);
-
         setContentPane(createContentPane());
+        addMouseMotionListener(this);
 
         button.addMouseMotionListener(new MouseMotionListener() {
             @Override
@@ -49,11 +49,8 @@ public class FirstFrame extends JFrame implements MouseMotionListener {
         });
         button.setBounds(100, 200, 100, 100);
         buttonYes.setBounds(300, 200, 100, 100);
-
-        addMouseMotionListener(this);
-
-
         labelMsg.setBounds(0, 0, 300, 100);
+
         add(button, BorderLayout.SOUTH);
         add(buttonYes, BorderLayout.SOUTH);
         add(labelMsg, BorderLayout.NORTH);
@@ -114,19 +111,19 @@ public class FirstFrame extends JFrame implements MouseMotionListener {
     private void checkBtnPositionOnLayout() {
 
         if (button.getX() < 0) {
-            setBtnPosition(button.getX() + 150*(random.nextInt(2)+1), button.getY());
+            setBtnPosition(button.getX() + 150 * (random.nextInt(2) + 1), button.getY());
         }
 
         if (button.getX() + button.getWidth() > this.getWidth()) {
-            setBtnPosition(button.getX() - 150*(random.nextInt(2)+1), button.getY());
+            setBtnPosition(button.getX() - 150 * (random.nextInt(2) + 1), button.getY());
         }
 
         if (button.getY() < 0) {
-            setBtnPosition(button.getX(), button.getY() + 150*(random.nextInt(2)+1));
+            setBtnPosition(button.getX(), button.getY() + 150 * (random.nextInt(2) + 1));
         }
 
         if (button.getY() + button.getHeight() > this.getHeight()) {
-            setBtnPosition(button.getX(), button.getY() - 150*(random.nextInt(2)+1));
+            setBtnPosition(button.getX(), button.getY() - 150 * (random.nextInt(2) + 1));
         }
     }
 
